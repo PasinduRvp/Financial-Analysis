@@ -11,7 +11,6 @@ interface FinancialItem {
   id: string;
   itemNo: number;
   name: string;
-  description: string;
   income: number;
   expense: number;
 }
@@ -35,7 +34,6 @@ const MonthlyReport = () => {
       id: Date.now().toString(),
       itemNo: items.length + 1,
       name: "",
-      description: "",
       income: 0,
       expense: 0
     };
@@ -206,13 +204,12 @@ const MonthlyReport = () => {
       const tableData = items.map(item => [
         item.itemNo.toString(),
         item.name,
-        item.description,
         `$${item.income.toFixed(2)}`,
         `$${item.expense.toFixed(2)}`
       ]);
 
       autoTable(doc, {
-        head: [['Item No', 'Name', 'Description', 'Income', 'Expense']],
+        head: [['Item No', 'Name', 'Income', 'Expense']],
         body: tableData,
         startY: 45,
       });
@@ -322,7 +319,6 @@ const MonthlyReport = () => {
                     <tr className="border-b bg-gray-50">
                       <th className="text-left p-3 font-medium">Item No</th>
                       <th className="text-left p-3 font-medium">Name</th>
-                      <th className="text-left p-3 font-medium">Description</th>
                       <th className="text-left p-3 font-medium">Income</th>
                       <th className="text-left p-3 font-medium">Expense</th>
                       <th className="text-left p-3 font-medium">Actions</th>
@@ -338,14 +334,6 @@ const MonthlyReport = () => {
                             onChange={(e) => updateItem(item.id, 'name', e.target.value)}
                             placeholder="Item name"
                             className="min-w-[120px]"
-                          />
-                        </td>
-                        <td className="p-3">
-                          <Input
-                            value={item.description}
-                            onChange={(e) => updateItem(item.id, 'description', e.target.value)}
-                            placeholder="Description"
-                            className="min-w-[150px]"
                           />
                         </td>
                         <td className="p-3">
