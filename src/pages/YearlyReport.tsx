@@ -11,7 +11,6 @@ interface YearlyFinancialItem {
   id: string;
   itemNo: number;
   name: string;
-  description: string;
   monthlyData: { [month: string]: { income: number; expense: number } };
 }
 
@@ -35,13 +34,12 @@ const YearlyReport = () => {
       id: Date.now().toString(),
       itemNo: items.length + 1,
       name: "",
-      description: "",
       monthlyData
     };
     setItems([...items, newItem]);
   };
 
-  const updateItem = (id: string, field: 'name' | 'description', value: string) => {
+  const updateItem = (id: string, field: 'name', value: string) => {
     setItems(items.map(item => 
       item.id === id ? { ...item, [field]: value } : item
     ));
@@ -332,21 +330,13 @@ const YearlyReport = () => {
               {items.map((item) => (
                 <div key={item.id} className="border rounded-lg p-4 space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 mr-4">
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-4 flex-1 mr-4">
                       <div>
                         <label className="text-sm font-medium">Category Name</label>
                         <Input
                           value={item.name}
                           onChange={(e) => updateItem(item.id, 'name', e.target.value)}
                           placeholder="e.g., Marketing, Operations"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Description</label>
-                        <Input
-                          value={item.description}
-                          onChange={(e) => updateItem(item.id, 'description', e.target.value)}
-                          placeholder="Brief description"
                         />
                       </div>
                     </div>
