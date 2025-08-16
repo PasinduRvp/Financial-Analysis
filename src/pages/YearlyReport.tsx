@@ -279,7 +279,7 @@ const YearlyReport = () => {
         }
       }
 
-      doc.save(`yearly-report-${selectedYear}.pdf`);
+      doc.save(`Yearly Report-${selectedYear}.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
     }
