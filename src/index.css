@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Professional Financial App Color Palette */
+    --background: 210 20% 98%;
+    --foreground: 213 31% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 31% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 31% 11%;
+
+    /* Primary - Professional Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
+    --primary-light: 217 91% 92%;
+
+    /* Secondary - Soft Gray */
+    --secondary: 210 16% 93%;
+    --secondary-foreground: 213 31% 11%;
+    --secondary-hover: 210 16% 88%;
+
+    /* Muted - Subtle Backgrounds */
+    --muted: 210 20% 96%;
+    --muted-foreground: 213 19% 46%;
+
+    /* Accent - Financial Green */
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 142 76% 94%;
+
+    /* Financial Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 94%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 84% 95%;
+
+    /* Borders and Inputs */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+
+    /* Chart Colors */
+    --chart-1: 217 91% 60%;
+    --chart-2: 142 76% 36%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 100% 70%;
+    --chart-5: 340 75% 55%;
+
+    /* Professional Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 20% 99%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(213 31% 11% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(213 31% 11% / 0.1), 0 2px 4px -1px hsl(213 31% 11% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(213 31% 11% / 0.1), 0 4px 6px -2px hsl(213 31% 11% / 0.05);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 213 31% 11%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 16% 93%;
+    --sidebar-accent-foreground: 213 31% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    /* Dark mode for professional financial app */
+    --background: 213 31% 6%;
+    --foreground: 210 20% 98%;
+
+    --card: 213 31% 8%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 213 31% 8%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 65%;
+    --primary-light: 217 91% 20%;
+
+    --secondary: 213 31% 12%;
+    --secondary-foreground: 210 20% 98%;
+    --secondary-hover: 213 31% 16%;
+
+    --muted: 213 31% 10%;
+    --muted-foreground: 213 19% 65%;
+
+    --accent: 142 76% 42%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 142 76% 15%;
+
+    --success: 142 76% 42%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 15%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 15%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 84% 15%;
+
+    --border: 213 31% 15%;
+    --input: 213 31% 12%;
+    --ring: 217 91% 60%;
+
+    --chart-1: 217 91% 65%;
+    --chart-2: 142 76% 50%;
+    --chart-3: 38 92% 60%;
+    --chart-4: 280 100% 75%;
+    --chart-5: 340 75% 60%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 42%), hsl(142 76% 52%));
+    --gradient-card: linear-gradient(135deg, hsl(213 31% 8%), hsl(213 31% 10%));
+
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4), 0 4px 6px -2px hsl(0 0% 0% / 0.2);
+
+    --sidebar-background: 213 31% 8%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 31% 12%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 213 31% 15%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
