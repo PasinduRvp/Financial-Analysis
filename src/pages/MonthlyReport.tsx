@@ -261,13 +261,15 @@ const MonthlyReport = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gray-50 p-4">
+      <div className="min-h-screen bg-gray-50 px-4 py-6 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-8">
+          {/* Header */}
           <div className="text-center space-y-4">
             <h1 className="text-3xl font-bold text-gray-900">Monthly Financial Report</h1>
             <p className="text-gray-600">Generate detailed monthly financial analysis</p>
           </div>
 
+          {/* Report Period Selector */}
           <Card>
             <CardHeader>
               <CardTitle>Report Period</CardTitle>
@@ -304,10 +306,11 @@ const MonthlyReport = () => {
             </CardContent>
           </Card>
 
+          {/* Data Entry Table */}
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <CardTitle>Financial Data Entry</CardTitle>
-              <Button onClick={addNewItem} size="sm" className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={addNewItem} size="sm" className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto">
                 <Plus className="w-4 h-4 mr-2" />
                 Add Item
               </Button>
@@ -381,6 +384,7 @@ const MonthlyReport = () => {
             </CardContent>
           </Card>
 
+          {/* Totals Summary */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="bg-gradient-to-br from-green-50 to-green-100">
               <CardHeader>
@@ -410,6 +414,7 @@ const MonthlyReport = () => {
             </Card>
           </div>
 
+          {/* Charts Section */}
           {(totalIncome > 0 || totalExpense > 0) && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Card>
@@ -461,12 +466,13 @@ const MonthlyReport = () => {
             </div>
           )}
 
+          {/* Export Button */}
           <div className="flex justify-center">
             <Button
               onClick={exportToPDF}
               size="lg"
-              disabled={!selectedMonth || !selectedYear || items.length === 0 || (totalIncome === 0 && totalExpense === 0)}
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg"
+              disabled={!selectedMonth || !selectedYear || items.length === 0}
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg w-full md:w-auto"
             >
               <Download className="w-5 h-5 mr-2" />
               Download PDF Report with Charts
