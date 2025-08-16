@@ -249,7 +249,7 @@ const MonthlyReport = () => {
         }
       }
 
-      doc.save(`monthly-report-${selectedMonth}-${selectedYear}.pdf`);
+      doc.save(`Monthly Report-${selectedMonth}-${selectedYear}.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
     }
