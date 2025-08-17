@@ -9,7 +9,7 @@ import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Toolti
 
 interface FinancialItem {
   id: string;
-  itemNo: number;
+  date: string; // ISO date yyyy-mm-dd
   name: string;
   income: number;
   expense: number;
@@ -32,7 +32,7 @@ const MonthlyReport = () => {
   const addNewItem = () => {
     const newItem: FinancialItem = {
       id: Date.now().toString(),
-      itemNo: items.length + 1,
+      date: "",
       name: "",
       income: 0,
       expense: 0
@@ -48,8 +48,6 @@ const MonthlyReport = () => {
 
   const removeItem = (id: string) => {
     setItems(items.filter(item => item.id !== id));
-    const updatedItems = items.filter(item => item.id !== id);
-    setItems(updatedItems.map((item, index) => ({ ...item, itemNo: index + 1 })));
   };
 
   const totalIncome = items.reduce((sum, item) => sum + item.income, 0);
@@ -62,7 +60,7 @@ const MonthlyReport = () => {
   ];
 
   const barData = items.map(item => ({
-    name: item.name || `Item ${item.itemNo}`,
+    name: item.name || item.date || 'Item',
     income: item.income,
     expense: item.expense
   }));
@@ -202,14 +200,14 @@ const MonthlyReport = () => {
       doc.text(`Period: ${selectedMonth} ${selectedYear}`, 20, 35);
       
       const tableData = items.map(item => [
-        item.itemNo.toString(),
+        item.date || '',
         item.name,
         `$${item.income.toFixed(2)}`,
         `$${item.expense.toFixed(2)}`
       ]);
 
       autoTable(doc, {
-        head: [['Item No', 'Name', 'Income', 'Expense']],
+        head: [['Date', 'Name', 'Income', 'Expense']],
         body: tableData,
         startY: 45,
       });
@@ -249,7 +247,7 @@ const MonthlyReport = () => {
         }
       }
 
-      doc.save(`Monthly Report-${selectedMonth}-${selectedYear}.pdf`);
+      doc.save(`monthly-report-${selectedMonth}-${selectedYear}.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
     }
@@ -317,7 +315,7 @@ const MonthlyReport = () => {
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b bg-gray-50">
-                      <th className="text-left p-3 font-medium">Item No</th>
+                      <th className="text-left p-3 font-medium">Date</th>
                       <th className="text-left p-3 font-medium">Name</th>
                       <th className="text-left p-3 font-medium">Income</th>
                       <th className="text-left p-3 font-medium">Expense</th>
@@ -327,7 +325,14 @@ const MonthlyReport = () => {
                   <tbody>
                     {items.map((item) => (
                       <tr key={item.id} className="border-b hover:bg-gray-50">
-                        <td className="p-3">{item.itemNo}</td>
+                        <td className="p-3">
+                          <Input
+                            type="date"
+                            value={item.date}
+                            onChange={(e) => updateItem(item.id, 'date', e.target.value)}
+                            className="min-w-[140px]"
+                          />
+                        </td>
                         <td className="p-3">
                           <Input
                             value={item.name}
